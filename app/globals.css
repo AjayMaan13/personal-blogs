@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* next-themes toggles a `.dark` class on <html>; make Tailwind's dark: variant follow it
+   instead of the OS-level prefers-color-scheme media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Light theme — soft off-white paper, warm near-black text */
+  --background: #f7f4ee;
+  --foreground: #1f1b16;
+  --surface: #fffdf9;
+  --border: #e6e1d4;
+  --muted-foreground: #6b6558;
+  --accent: #b8622f;
+  --accent-foreground: #fffdf9;
+  --code-background: #1e1c19;
+  --code-foreground: #ede8de;
+}
+
+.dark {
+  /* Dark theme — near-black, warm cream text */
+  --background: #0b0a08;
+  --foreground: #f2ead9;
+  --surface: #141210;
+  --border: #292520;
+  --muted-foreground: #9a9384;
+  --accent: #e8935a;
+  --accent-foreground: #1f1b16;
+  --code-background: #100f0d;
+  --code-foreground: #ede8de;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-code-background: var(--code-background);
+  --color-code-foreground: var(--code-foreground);
+
+  /* font-display: headings/hero. font-serif: body prose. font-mono: UI chrome + code. */
+  --font-display: var(--font-fraunces);
+  --font-serif: var(--font-lora);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-lora);
+}
