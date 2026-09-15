@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "tsx scripts/generate-index.ts",
     "dev": "next dev",
+    "prebuild": "tsx scripts/generate-index.ts",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate-index": "tsx scripts/generate-index.ts"
   },
   "dependencies": {
     "fuse.js": "^7.5.0",
@@ -31,6 +34,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
     "tailwindcss": "^4",
+    "tsx": "^4.23.13",
     "typescript": "^5"
   }
 }
