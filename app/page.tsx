@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/posts";
+import { getAllPostSummaries } from "@/lib/posts";
 import { Hero } from "@/components/hero";
 import { PostCard } from "@/components/post-card";
 import { SocialLinks } from "@/components/social-links";
 
 export default function Home() {
-  const latestPosts = getAllPosts().slice(0, 3);
+  const latestPosts = getAllPostSummaries().slice(0, 3);
 
   return (
     <main className="flex flex-1 flex-col">

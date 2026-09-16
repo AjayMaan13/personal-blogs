@@ -2,7 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { getReadingTime, type ReadingTime } from "./reading-time";
+import { slugifyTag } from "./tags";
 import seriesMeta from "@/content/series.json";
+
+export { slugifyTag } from "./tags";
 
 const POSTS_DIR = path.join(process.cwd(), "content/posts");
 
@@ -27,6 +30,20 @@ export interface TagSummary {
   tag: string;
   slug: string;
   count: number;
+}
+
+// Lean, serializable shape for list/search/card rendering — used by the /blog
+// list, tag pages, the homepage grid, and the generated search index, so
+// there's one place that decides what a "post preview" looks like.
+export interface PostSummary {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+  series: string | null;
+  coverImage: string | null;
+  readingTime: string;
 }
 
 export interface SeriesSummary {
@@ -91,6 +108,23 @@ export function getAllPosts(): Post[] {
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
+export function toPostSummary(post: Post): PostSummary {
+  return {
+    slug: post.slug,
+    title: post.title,
+    description: post.description,
+    date: post.date,
+    tags: post.tags,
+    series: post.series ?? null,
+    coverImage: post.coverImage ?? null,
+    readingTime: post.readingTime.text,
+  };
+}
+
+export function getAllPostSummaries(): PostSummary[] {
+  return getAllPosts().map(toPostSummary);
+}
+
 export function getAdjacentPosts(slug: string): {
   prev: Post | null;
   next: Post | null;
@@ -106,13 +140,6 @@ export function getAdjacentPosts(slug: string): {
     prev: posts[index + 1] ?? null, // older post (list is sorted newest-first)
     next: posts[index - 1] ?? null, // newer post
   };
-}
-
-export function slugifyTag(tag: string): string {
-  return tag
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
 }
 
 export function getAllTags(): TagSummary[] {
