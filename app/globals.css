@@ -52,3 +52,96 @@ body {
   color: var(--foreground);
   font-family: var(--font-lora);
 }
+
+/* ---------------------------------------------------------------------- *
+ * rehype-pretty-code output (post body code blocks).
+ *
+ * Everything else in this project is styled with Tailwind utility classes
+ * on the React components directly. Code blocks are the one exception:
+ * line numbering needs CSS counters (`counter-increment` / `content:
+ * counter(...)`), which Tailwind has no real utility for — expressing that
+ * through arbitrary-value classes would be harder to read than plain CSS,
+ * so it lives here instead. Structure produced by rehype-pretty-code
+ * (verified against the installed package's source):
+ *   <figure data-rehype-pretty-code-figure>
+ *     <figcaption data-rehype-pretty-code-title>filename</figcaption>
+ *     <pre data-language="ts"><code data-line-numbers><span data-line>...</span></code></pre>
+ *   </figure>
+ * ---------------------------------------------------------------------- */
+
+figure[data-rehype-pretty-code-figure] {
+  margin: 1.5rem 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--code-background);
+}
+
+figcaption[data-rehype-pretty-code-title] {
+  position: relative;
+  padding: 0.65rem 1rem 0.65rem 4.5rem;
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--code-foreground);
+  opacity: 0.75;
+}
+
+/* Three "traffic light" dots, drawn with one pseudo-element + box-shadow. */
+figcaption[data-rehype-pretty-code-title]::before {
+  content: "";
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 9999px;
+  background: #ec6a5e;
+  box-shadow:
+    1.05rem 0 0 #f4bf4f,
+    2.1rem 0 0 #61c454;
+  transform: translateY(-50%);
+}
+
+figure[data-rehype-pretty-code-figure] pre {
+  margin: 0;
+  padding: 1rem 0;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+figure[data-rehype-pretty-code-figure] code {
+  display: grid;
+  counter-reset: line;
+  color: var(--code-foreground);
+}
+
+figure[data-rehype-pretty-code-figure] code > [data-line] {
+  padding: 0 1.25rem;
+  border-left: 2px solid transparent;
+}
+
+figure[data-rehype-pretty-code-figure] code[data-line-numbers] > [data-line] {
+  padding-left: 0.5rem;
+}
+
+figure[data-rehype-pretty-code-figure] code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1.5rem;
+  margin-right: 1.25rem;
+  text-align: right;
+  color: var(--muted-foreground);
+}
+
+figure[data-rehype-pretty-code-figure] code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  width: 2rem;
+}
+
+figure[data-rehype-pretty-code-figure] [data-highlighted-line] {
+  border-left-color: var(--accent);
+  background: rgb(255 255 255 / 6%);
+}
