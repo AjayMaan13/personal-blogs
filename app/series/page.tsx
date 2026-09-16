@@ -3,8 +3,9 @@ import { getAllSeries } from "@/lib/posts";
 import { SeriesCard } from "@/components/series-card";
 
 export const metadata: Metadata = {
-  title: "Series | Ajay Maan",
+  title: "Series",
   description: "Multi-part posts, grouped together.",
+  openGraph: { title: "Series", description: "Multi-part posts, grouped together." },
 };
 
 export default function SeriesIndexPage() {

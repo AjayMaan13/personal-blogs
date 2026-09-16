@@ -13,9 +13,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { tag } = await params;
   const label = getAllTags().find((t) => t.slug === tag)?.tag ?? tag;
+  const description = `Posts tagged "${label}".`;
   return {
-    title: `#${label} | Ajay Maan`,
-    description: `Posts tagged "${label}".`,
+    title: `#${label}`,
+    description,
+    openGraph: { title: `#${label}`, description, type: "website" },
   };
 }
 

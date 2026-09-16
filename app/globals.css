@@ -11,7 +11,11 @@
   --surface: #fffdf9;
   --border: #e6e1d4;
   --muted-foreground: #6b6558;
-  --accent: #b8622f;
+  /* #9e5829 rather than the original #b8622f — the lighter shade only hit
+     3.96:1 against --background, short of the 4.5:1 WCAG AA text minimum
+     (this color is used for links and other normal-size text, not just
+     large text/UI accents). This one measures 4.93:1. */
+  --accent: #9e5829;
   --accent-foreground: #fffdf9;
   --code-background: #1e1c19;
   --code-foreground: #ede8de;

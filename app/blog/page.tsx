@@ -3,8 +3,9 @@ import { getAllPostSummaries } from "@/lib/posts";
 import { PostSearch } from "@/components/post-search";
 
 export const metadata: Metadata = {
-  title: "Blog | Ajay Maan",
+  title: "Blog",
   description: "Every post — search or browse by tag.",
+  openGraph: { title: "Blog", description: "Every post — search or browse by tag." },
 };
 
 export default async function BlogPage({

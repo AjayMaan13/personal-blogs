@@ -15,9 +15,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const series = getSeriesBySlug(slug);
   if (!series) return {};
+  const description = series.description ?? `Posts in the "${series.title}" series.`;
   return {
-    title: `${series.title} | Ajay Maan`,
-    description: series.description ?? `Posts in the "${series.title}" series.`,
+    title: series.title,
+    description,
+    openGraph: { title: series.title, description, type: "website" },
   };
 }
 

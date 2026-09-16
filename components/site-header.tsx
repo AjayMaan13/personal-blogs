@@ -16,12 +16,12 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-4xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-display text-lg text-foreground">
+      <div className="mx-auto flex w-full max-w-4xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
+        <Link href="/" className="whitespace-nowrap font-display text-base text-foreground sm:text-lg">
           Ajay Maan
         </Link>
 
-        <nav className="flex items-center gap-6 font-mono text-sm">
+        <nav className="flex items-center gap-3 font-mono text-sm sm:gap-6">
           {NAV_LINKS.map((link) => {
             const isActive =
               link.href === "/" ? pathname === "/" : pathname?.startsWith(link.href);

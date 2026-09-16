@@ -48,7 +48,7 @@ export function PostSearch({
         onChange={(event) => setQuery(event.target.value)}
         placeholder="Search posts..."
         aria-label="Search posts"
-        className="w-full rounded-lg border border-border bg-surface px-4 py-2.5 font-mono text-sm text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none"
+        className="w-full rounded-lg border border-border bg-surface px-4 py-2.5 font-mono text-sm text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
       />
 
       {isSearching && (

@@ -33,8 +33,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = readPost(slug);
   return {
-    title: `${post.title} | Ajay Maan`,
+    title: post.title,
     description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      publishedTime: post.date,
+      tags: post.tags,
+    },
   };
 }
 
