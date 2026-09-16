@@ -11,6 +11,8 @@ const NAV_LINKS = [
   { href: "/about", label: "About" },
 ];
 
+const PORTFOLIO_URL = "https://ajaymaan13.vercel.app";
+
 export function SiteHeader() {
   const pathname = usePathname();
 
@@ -41,6 +43,12 @@ export function SiteHeader() {
               </Link>
             );
           })}
+          <a
+            href={PORTFOLIO_URL}
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Portfolio &#8599;
+          </a>
           <ThemeToggle />
         </nav>
       </div>
