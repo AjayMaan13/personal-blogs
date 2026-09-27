@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 import type { MDXRemoteProps } from "next-mdx-remote/rsc";
+import { YouTubeEmbed } from "@/components/youtube-embed";
 
 type MDXComponentMap = NonNullable<MDXRemoteProps["components"]>;
 
@@ -52,6 +53,7 @@ function InlineCode(props: ComponentPropsWithoutRef<"code">) {
 }
 
 export const mdxComponents: MDXComponentMap = {
+  YouTubeEmbed,
   h2: (props) => (
     <h2 {...props} className="group mt-12 scroll-mt-32 font-display text-2xl text-foreground" />
   ),

@@ -3,7 +3,17 @@ import path from "node:path";
 import matter from "gray-matter";
 import { getReadingTime, type ReadingTime } from "./reading-time";
 import { slugifyTag } from "./tags";
-import seriesMeta from "@/content/series.json";
+import seriesMetaJson from "@/content/series.json";
+
+// content/series.json can be `[]` (no series yet), which TypeScript infers
+// as `never[]` from the literal — cast to the real shape so getAllSeries()
+// below still type-checks once entries exist again.
+interface SeriesMeta {
+  slug: string;
+  title: string;
+  description?: string;
+}
+const seriesMeta = seriesMetaJson as SeriesMeta[];
 
 export { slugifyTag } from "./tags";
 

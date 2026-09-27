@@ -10,7 +10,7 @@ export function Hero() {
           Software developer &middot; Toronto, Canada
         </p>
         <h1 className="font-display text-5xl font-medium text-foreground sm:text-6xl">
-          Ajay Maan
+          Ajaypartap Singh Maan
         </h1>
         <p className="max-w-xl font-serif text-lg text-muted-foreground">
           Writing down what I build, break, and learn along the way.

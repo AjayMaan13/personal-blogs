@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 px-6 py-16">
       <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">About</p>
-      <h1 className="mt-2 font-display text-3xl text-foreground">Ajay Maan</h1>
+      <h1 className="mt-2 font-display text-3xl text-foreground">Ajaypartap Singh Maan</h1>
 
       <div className="mt-8 space-y-5 font-serif text-base leading-relaxed text-foreground">
         <p>

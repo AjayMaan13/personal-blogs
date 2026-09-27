@@ -20,7 +20,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
       <div className="mx-auto flex w-full max-w-4xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
         <Link href="/" className="whitespace-nowrap font-display text-base text-foreground sm:text-lg">
-          Ajay Maan
+          AJ
         </Link>
 
         <nav className="flex items-center gap-3 font-mono text-sm sm:gap-6">
